@@ -9,13 +9,13 @@ An e-commerce Django web app.
 
 <p align="center">
   <img src="mySite - Google Chrome - store.gif" width="50%"/> 
+  <i>Store</i>
 </p>
-<p style="text-align: center;"><i>Store</i></p>
 
 
 <hr>
 
 <p align="center">
   <img src="mySite - Google Chrome - add to cart.gif" width="50%"/>
+  <i>Add to cart button</i>
 </p>
-<p style="text-align: center;"><i>Add to cart button</i></p>
