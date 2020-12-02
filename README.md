@@ -9,9 +9,10 @@ An e-commerce Django web app.
 <p align="center">
   <img src="mySite - Google Chrome - store.gif" width="50%"/> 
   <br>
-  <em>Store</em>
+  <i>Store</i>
 </p>
 
+---------------------------------------------
 
 <p align="center">
   <img src="mySite - Google Chrome - add to cart.gif" width="50%"/>
