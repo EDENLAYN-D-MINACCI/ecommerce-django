@@ -5,7 +5,7 @@ An e-commerce Django web app.
 - The *card hover effect* comes from [Florian Kutschera](https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d) blog post on medium
 - The foundation of the app is based on [Dennis Ivanov](https://www.youtube.com/watch?v=_ELCMngbM0E&list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng) video series
 
-<hr>
+----------------------------------------------
 
 <p align="center">
   <img src="mySite - Google Chrome - store.gif" width="50%"/> 
@@ -13,11 +13,12 @@ An e-commerce Django web app.
   <i>Store</i>
 </p>
 
-
-<hr>
+----------------------------------------------
 
 <p align="center">
   <img src="mySite - Google Chrome - add to cart.gif" width="50%"/>
   <i>Add to cart button</i>
   <br>
 </p>
+
+
