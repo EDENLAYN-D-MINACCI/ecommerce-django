@@ -9,6 +9,7 @@ An e-commerce Django web app.
 
 <p align="center">
   <img src="mySite - Google Chrome - store.gif" width="50%"/> 
+  <br>
   <i>Store</i>
 </p>
 
@@ -18,4 +19,5 @@ An e-commerce Django web app.
 <p align="center">
   <img src="mySite - Google Chrome - add to cart.gif" width="50%"/>
   <i>Add to cart button</i>
+  <br>
 </p>
