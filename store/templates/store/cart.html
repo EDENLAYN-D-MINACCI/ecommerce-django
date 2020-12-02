@@ -1,0 +1,73 @@
+{% extends "store/main.html" %}
+{% load static %}
+{% load custom_tag_filter %}
+
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="row"> 
+    <div class="col-lg-12">
+        <div class="box-element-spaced">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>Items: <strong id="cart-item-number">{{ order.getCartItemNumber }}</strong></div>
+                <div>Total: <strong id="cart-total-price">{{ order.getCartTotal|formatPrice }}</strong> €</div>
+                <a class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+            </div>
+        </div>
+
+        <br>
+        
+        <div class="box-element-spaced">
+            <div class="cart-row">
+                <div class="cart-column"></div>
+                <div class="cart-column">Item</div>
+                <div class="cart-column">Price</div>
+                <div class="cart-column">Quantity</div>
+                <div class="cart-column"><strong>Total</strong></div>
+            </div>
+
+            <script> var rowIndex = 0; </script>
+
+            {% for item in orderItems %}
+            <div class="cart-row">
+                <div class="cart-column"><img class="img-fluid img-thumbnail" src="{{ item.product.image_url }}"></div>
+                <div class="cart-column"><a href="#">{{ item.product.name }}</a></div>
+                <div class="cart-column">{{ item.product.price|formatPrice }} €</div>
+                <div class="cart-column">
+                    <p   style="display: inline-block; padding-right: 16px;" class="quantity-value">{{ item.quantity }}</p>
+                    <div style="display: inline-block;">
+
+                        <div id="increase" class="quantity-button quantity-increase" data-product-id="{{item.product.id}}" data-product-price="{{item.product.price}}" data-product-name="{{ item.product.name }}" data-action="add" >
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-up-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                            </svg>
+                        </div>
+                        <div id="decrease" class="quantity-button quantity-decrease" src="{% static 'image/down-arrow.png' %}" data-product-id="{{item.product.id}}" data-product-price="{{item.product.price}}" data-product-name="{{ item.product.name }}" data-action="remove">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                        </div>
+                        <script>   
+                            // assign row IDs
+                            document.getElementById("increase").id = rowIndex;
+                            document.getElementById("decrease").id = rowIndex;
+                            rowIndex += 1;
+                        </script>
+                    </div>
+                </div>
+                <div class="cart-column row-total">{{ item.getTotal|formatPrice }} €</div>
+            </div>
+            {% endfor %}     
+        </div>    
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script type="text/JavaScript" src="{% static 'js/cart.js' %}"></script>  
+{% endblock js %}

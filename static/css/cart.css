@@ -1,0 +1,31 @@
+.cart-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid;
+    border-color: var(--dark2);
+}
+
+.cart-column {
+    flex: 1;
+    text-align:center;
+}
+
+.quantity-button{
+    width: 16px;
+    height: 16px;
+    padding: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    filter: blur(0px);
+    transition: filter ease 0.2s;
+}
+
+
+.quantity-button:active{
+    filter: blur(3px);
+    transition: filter ease 0.1s;
+}
