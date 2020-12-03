@@ -10,7 +10,7 @@ def email_validation_function(value):
 
 
 class Customer(models.Model): # OneToOne relationship, a user can only have one customer and vice versa
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default="Anonymous")
     email = models.EmailField(max_length=200, null=True, blank=True, validators=[email_validation_function])
     date_created = models.DateTimeField(auto_now_add=True)
     address = models.CharField(max_length=200, null=True, blank=True)

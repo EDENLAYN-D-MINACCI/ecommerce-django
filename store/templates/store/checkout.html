@@ -31,7 +31,7 @@
               <div class="form-row">
                 <div class="form-group  col-md-4">
                   <label for="inputCountry">Country</label>
-                  <input type="text" class="form-control" id="inputCountry" name="country" required>
+                  <input type="text" class="form-control" id="inputCountry" name="country" value="{{country}}" required>
                 </div>
                 <div class="form-group  col-md-8">
                   <label for="inputAddress">Address</label>
@@ -42,15 +42,15 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity" name="city" required>
+                  <input type="text" class="form-control" id="inputCity" name="city" value="{{city}}" required>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputRegion">Region</label>
-                  <input type="text" class="form-control" id="inputRegion" name="region" required>
+                  <input type="text" class="form-control" id="inputRegion" name="region" value="{{region}}" required>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip" name="zip" required>
+                  <input type="text" class="form-control" id="inputZip" name="zip" value="{{zip}}" required>
                 </div>
               </div>
 
@@ -113,49 +113,15 @@
     <!-- Loading the card field. -->
     <script type="text/JavaScript" src="{% static 'js/checkout.js' %}"></script>  
 
-    <!-- Loading google places api. -->
-    <script defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS8Y81J21sUobkmRkXcIECoxVQVsnkYCY&libraries=places&callback=initMap">
-    </script>
-
     <script>
-      let autocomplete;
-      var addressField = document.getElementById('inputAddress');
-
-      function initMap(){
-        autocomplete = new google.maps.places.Autocomplete(
-          addressField,
-          {
-            type: ['address'],
-            componentRestrictions: {'country': ['AU']},
-            fields: ['place_id', 'name', 'types']
-          }
-        );
-
-        autocomplete.addListener('place_changed', onPlaceChanged);
-      }
-
-      function onPlaceChanged(){
-        var place = autocomplete.getPlace();
-
-        if(!place.geometry){
-          addressField.placeholder = 'Enter your address';
-        }
-        else{
-          addressField.innerHTML = place.name;
-        }
-      }
+        orderValidationSnackbar('{{transaction_status}}');
     </script>
-   
+    
     {% if loggedIn %}
       <script>
-        orderValidationSnackbar('{{transaction_state}}');
-        /*
-
         document.getElementById('firstName').value    = "{{name}}";
         document.getElementById('inputEmail4').value  = "{{email}}";
         document.getElementById('inputAddress').value = "{{address}}";
-        */
       </script>
     {% endif %}
 
@@ -163,14 +129,6 @@
       <script> document.getElementById('checkout-button').classList = "hidden";</script>
     {% endif %}
 
-    <script>
-      /*
-      document.getElementById('inputCountry').value = "{{country}}";
-      document.getElementById('inputCity').value    = "{{city|safe}}";
-      document.getElementById('inputZip').value     = "{{zip}}";
-      document.getElementById('inputRegion').value  = "{{region|safe}}";
-      */
-    </script>
 {% endblock js %}
 
 
