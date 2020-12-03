@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Product, ProductCategories
 from .customer_handler.customer_manager import get_or_create_order
 from .customer_handler.transaction_status import get_status
-from ecommerce_sculpture.settings import APP_TITLE, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY
+from ecommerce_sculpture.settings import APP_TITLE, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, IPINFO_KEY
 
 
 # Set your secret key. Remember to switch to your live secret key in production!
@@ -62,7 +62,7 @@ def checkout(request):
 
         # adding customer location to context from ip address
         try:
-            details = ipinfo.getHandler(access_token="ip-info-key-tmp").getDetails()
+            details = ipinfo.getHandler(access_token=IPINFO_KEY).getDetails()
             print(details.all)
             context_checkout['country']  = details.country_name
             context_checkout['region']   = details.region
