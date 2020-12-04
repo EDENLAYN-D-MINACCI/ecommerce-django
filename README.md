@@ -8,7 +8,7 @@ An e-commerce Django web app.
 
 # Demo:
 <p align="center">
-  <img src="demo-1.mp4" width="50%"/> 
+  <img src="demo-1.gif" width="50%"/> 
   <br>
   <i>Store</i>
 </p>
@@ -16,7 +16,7 @@ An e-commerce Django web app.
 ---------------------------------------------
 
 <p align="center">
-  <img src="demo-2.mp4" width="50%"/>
+  <img src="demo-2.gif" width="50%"/>
   <br>
   <i>Cart</i>
 </p>
