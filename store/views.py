@@ -1,7 +1,8 @@
-import ipinfo, stripe
+import ipinfo, stripe, json
 from django.shortcuts import render
 from .models import Product, ProductCategories
 from .customer_handler.customer_manager import get_or_create_order
+from .customer_handler.customer_request import get_product_category
 from .customer_handler.transaction_status import get_status
 from ecommerce_sculpture.settings import APP_TITLE, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, IPINFO_KEY
 
@@ -12,19 +13,34 @@ stripe.api_key = STRIPE_SECRET_KEY
 
 # init
 
-company_email    = "company@gmail.com"
-default_category = ProductCategories.objects.get(category="necklace")
+company_email = "company@gmail.com"
 context_store = context_cart = context_checkout = {}
-
-
+categories = ProductCategories.objects.all()
 
 # home page
-def store(request):
-    context_store["title"] = APP_TITLE
+def store(request, selected_category="no-filter"):
+
+    if selected_category == "no-filter":
+        products = Product.objects.all()
+        context_store["products"] = products
+
+        if len(products) == 0:
+            context_store["no_product"] = True
+        else:
+            context_store["no_product"] = False
+    else:
+        filtered_products = Product.objects.filter(category__category__contains=selected_category)
+        context_store["products"] = filtered_products
+        
+        if len(filtered_products) == 0:
+            context_store["no_product"] = True
+        else:
+            context_store["no_product"] = False
+
+    context_store["title"]              = APP_TITLE
+    context_store["product_categories"] = categories
     context_store["transaction_status"] = get_status(request)
-    context_store["product_category"] = default_category#get_product_category(request)
-    context_store["products"]  = Product.objects.all()
-    context_store["product_categories"] = ProductCategories.objects.all()
+
     return render(request, 'store/store.html', context_store)
 
 

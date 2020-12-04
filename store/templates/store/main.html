@@ -50,30 +50,31 @@
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{% url 'store' %}">{{ title }}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" style="margin-right: 8px;">
-              <!-- dropdown -->
-              <div class="btn-group">
-                <button type="button" class="btn btn-danger">Category</button>
-                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu">
-                  {% for category in product_categories %}
-                    <button onclick="setCategory()" class="dropdown-item">{{category}}</button>
-                  {% endfor %}
-                </div>
+            <li class="nav-item dropdown dropleft">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a href="{% url 'category' selected_category='no-filter' %}">
+                  <button class="dropdown-item">no filter</button>
+                </a>
+                <div class="dropdown-divider"></div>
+                {% for category in product_categories %}
+                  <a href="{% url 'category' selected_category=category %}">
+                    <button class="dropdown-item">{{category}}</button>
+                  </a>
+                {% endfor %}
               </div>
             </li>
-        </ul>
-
+          </ul>
         </div>
       </nav>
+
 
       <div class="container block-content">
         {% block content %} {% endblock content %}
@@ -82,11 +83,7 @@
       {% block footer %} {% endblock footer %}
 
     
-    <script>
-      function setCategory(){
-          window.location.href = "{% url 'product-category' %}" + "?category="+"test";
-      }
-    </script>
+    
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

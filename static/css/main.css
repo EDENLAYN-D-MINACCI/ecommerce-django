@@ -34,6 +34,7 @@ body{
 } 
 
 footer{
+    z-index: 1000;
     position: relative;    
     background-color: var(--dark);
     color: var(--dark_text);
@@ -74,10 +75,38 @@ input[type=text], input[type=email] {
 }
 
 .block-content{
+    position: relative;
+    min-height: 100vh;
     width: auto;
     padding: 2%;
 }
 
+
+  
+/* div containers */
+.box-element{
+    color: var(--text);
+    background-color: var(--opacity);
+    border-radius:  0 0 4px 4px;
+    border-radius: 4px;
+}
+
+.box-element-spaced{
+    color: var(--text);
+    background-color: var(--opacity);
+    border-radius:  0 0 4px 4px;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 16px;
+}
+
+/* bootstrap class (used in the navbar) */
+.bg-dark{
+    background-color: var(--dark)!important;
+}
+.dropdown-item{
+    text-align: left!important;
+}
 
 /* card elevation from https://codepen.io/sdthornton/pen/wBZdXq */
 
@@ -111,50 +140,10 @@ input[type=text], input[type=email] {
     background-color: rgba(red,green,blue,0.016);
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-  
-
-.box-element{
-    color: var(--text);
-    background-color: var(--opacity);
-    border-radius:  0 0 4px 4px;
-    border-radius: 4px;
-}
-
-.box-element-spaced{
-    color: var(--text);
-    background-color: var(--opacity);
-    border-radius:  0 0 4px 4px;
-    border-radius: 4px;
-    padding: 16px;
-    margin: 16px;
-}
-
-/* bootstrap class (used in the navbar) */
-.bg-dark{
-    background-color: var(--dark)!important;
-}
 
 
-.hidden{
-    visibility: hidden;
-}
 
-#cart-icon{
-    width: 25px;
-    display: inline-block;
-    margin-left: 15px;
-    filter: invert(100%);
-}
 
-#source-code-link{
-    color: var(--dark_text);
-    transition: color 1s ease;
-}
-
-#source-code-link:hover{
-    color: orange;
-    transition: color 1s ease;
-}
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
@@ -172,7 +161,7 @@ input[type=text], input[type=email] {
     bottom: 0px; /* 30px from the bottom */
 }
   
-  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
     visibility: visible; /* Show the snackbar */
     /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
@@ -201,3 +190,31 @@ input[type=text], input[type=email] {
     from {bottom: 0px; opacity: 1;}
     to {bottom: -30px; opacity: 0;}
   }
+
+
+
+
+  
+/* other */ 
+
+.error-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#source-code-link{
+    color: var(--dark_text);
+    transition: color 1s ease;
+}
+
+#source-code-link:hover{
+    color: orange;
+    transition: color 1s ease;
+}
+

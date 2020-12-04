@@ -1,5 +1,4 @@
 var addToCartButtons = document.getElementsByClassName("cart-add");
-var removeFromCartButton = document.getElementById('cart-remove');
 
 for(var i = 0; i < addToCartButtons.length; i++){
 

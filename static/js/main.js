@@ -22,18 +22,6 @@ function showSnackbar(message) {
 
     console.log('showing snackbar');
 }
-
-// If the length of the element's string is 0 then display helper message 
-function required(inputtx) 
-{
-  if (inputtx.value.length == 0)
-   { 
-      alert("message");  	
-      return false; 
-   }  	
-   return true; 
- } 
-
  
 function orderUpdate(productId, productName, action){
     console.log('add to cart: sending data..');

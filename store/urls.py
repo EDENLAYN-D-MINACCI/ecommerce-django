@@ -9,5 +9,5 @@ urlpatterns = [
     path('checkout/', views.checkout, name="checkout"),
     path('order-update/', order_update, name="order-update"),
     path('order-validation/', order_validation, name="order-validation"),
-    path('product-category/', get_product_category, name="product-category"),
+    path('<slug:selected_category>/', views.store, name="category"),
 ]

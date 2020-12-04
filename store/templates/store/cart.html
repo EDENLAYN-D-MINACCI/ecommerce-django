@@ -15,7 +15,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div>Items: <strong id="cart-item-number">{{ order.getCartItemNumber }}</strong></div>
                 <div>Total: <strong id="cart-total-price">{{ order.getCartTotal|formatPrice }}</strong> €</div>
-                <a class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+                <a class="btn btn-dark" style="color: white;" href="{% url 'checkout' %}">Checkout</a>
             </div>
         </div>
 

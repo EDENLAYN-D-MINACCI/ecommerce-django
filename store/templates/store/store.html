@@ -13,6 +13,11 @@
 {% block content %}
     <div class="row">
        
+        {% if no_product %}
+            <div class="error-message">
+                <h1>Sorry, there's nothing here.</h1>
+            </div>
+        {% endif %}
         {% for product in products %}
         <div class="col-lg-4">
           

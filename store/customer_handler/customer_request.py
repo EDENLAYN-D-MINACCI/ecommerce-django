@@ -4,14 +4,7 @@ from .transaction_status import *
 from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.shortcuts import redirect
-
  
-
-def get_product_category(request):
-    category = request.GET.get('category')
-    if category is None:
-        category = default_category
-    return HttpResponse(category)
 
 
 # call when adding or removing item from the cart

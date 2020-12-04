@@ -26,6 +26,6 @@
 
 
 .quantity-button:active{
-    filter: blur(3px);
+    filter: blur(1px);
     transition: filter ease 0.1s;
 }
