@@ -9,7 +9,7 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-6">
-        <div class="box-element-spaced">
+        <div class="box-element-spaced card-2">
             <form action="{% url 'order-validation' %}" method="post" id="payment-form">
               {% csrf_token %}
 
@@ -78,7 +78,7 @@
     </div>
 
     <div class="col-lg-6">
-      <div class="box-element-spaced">
+      <div class="box-element-spaced card-2">
         <div id="accordion">
         <h5><strong>ORDER RECAP</strong></h5>
         <hr>

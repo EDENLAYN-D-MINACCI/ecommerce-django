@@ -2,7 +2,6 @@ import ipinfo, stripe, json
 from django.shortcuts import render
 from .models import Product, ProductCategories
 from .customer_handler.customer_manager import get_or_create_order
-from .customer_handler.customer_request import get_product_category
 from .customer_handler.transaction_status import get_status
 from ecommerce_sculpture.settings import APP_TITLE, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, IPINFO_KEY
 
@@ -12,9 +11,7 @@ from ecommerce_sculpture.settings import APP_TITLE, STRIPE_PUBLIC_KEY, STRIPE_SE
 stripe.api_key = STRIPE_SECRET_KEY
 
 # init
-
-company_email = "company@gmail.com"
-context_store = context_cart = context_checkout = {}
+context_store = context_cart = context_checkout = {'title':APP_TITLE}
 categories = ProductCategories.objects.all()
 
 # home page
@@ -37,7 +34,6 @@ def store(request, selected_category="no-filter"):
         else:
             context_store["no_product"] = False
 
-    context_store["title"]              = APP_TITLE
     context_store["product_categories"] = categories
     context_store["transaction_status"] = get_status(request)
 
@@ -47,7 +43,6 @@ def store(request, selected_category="no-filter"):
 
 def cart(request):
     order = get_or_create_order(request)
-    context_cart["title"] = APP_TITLE
     context_cart["order"] = order
     context_cart["orderItems"] = order.orderitem_set.all() 
     return render(request, 'store/cart.html', context_cart)
@@ -57,7 +52,6 @@ def cart(request):
 def checkout(request):
     order = get_or_create_order(request)
     customer = order.customer
-    context_checkout["title"] = APP_TITLE
 
     # adding stripe public key to context
     context_checkout['STRIPE_PUBLIC_KEY'] = STRIPE_PUBLIC_KEY

@@ -164,9 +164,9 @@ SESSION_COOKIE_AGE = 5184000
 # myaccount.google.com/lesssecureapps (to enable the site to sent email automatically)
 # accounts.google.com/DisplayUnlockCaptcha (to enable the site to sent email automatically)
 # Email Settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
-EMAIL_USE_SSL = env('EMAIL_USE_SSL')

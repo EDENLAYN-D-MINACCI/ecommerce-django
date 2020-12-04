@@ -4,7 +4,16 @@ from .transaction_status import *
 from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.shortcuts import redirect
- 
+from ecommerce_sculpture.settings import EMAIL_HOST_USER, APP_TITLE
+
+
+def send_confirmation_email(customer):
+
+    subject = 'Your order on ' + APP_TITLE
+    message = 'Thanks for your order'
+    email_from = EMAIL_HOST_USER
+    recipient_list = [customer.email]
+    send_mail( subject, message, email_from, recipient_list )
 
 
 # call when adding or removing item from the cart
@@ -122,14 +131,8 @@ def order_validation(request):
 
             # show success snackbar
             set_status(request,1)
+            #send_confirmation_email(customer)
             return redirect('store',permanent=True)
 
 
-def send_confirmation_email():
-    send_email(
-        site_title + ' order', # subject
-        'hey ' + customer.name + ', your payment has been accepted', # message
-        company_email, # from
-        [customer.email], # to
-    )
       
